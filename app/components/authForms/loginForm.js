@@ -1,31 +1,38 @@
 "use client";
-
-import { useContext } from "react";
-import useResource from "../customeHook/registerNewUser";
-import { useState } from "react";
-export default function RegisterForm({ onClose }) {
-  const { createNewUser } = useResource();
-  const handleRegisterNewUser = async (e) => {
-    console.log("clicked");
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/authContext";
+export default function LoginForm({isOpen, onClose }) {
+  const {login } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const handleLogin = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const username = formData.get("username");
-    const email = formData.get("email");
-    const password1 = formData.get("password1");
-    const password2 = formData.get("password2");
+    const password = formData.get("password");
 
-    
-      // Attempt to create a new user
-      const response = await createNewUser({ username, email, password1, password2 });
+    try {
+      const response = await login({ username, password });
+      console.log("Login successful", response.data);
 
-      // Optionally close the modal or show success message
-      onClose();
-    
+      // onClose();
+      // Optionally, redirect or show a success message here
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setErrorMessage("Invalid credentials, please try again.");
+      } else {
+        // Handle other errors
+        setErrorMessage("An error occurred. Please try again later.");
+      }
+    }
   };
+
+
 
   return (
     <>
-      <div className="bg-white flex items-center justify-center transition mt-10">
+    
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      
         <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg relative ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,58 +50,44 @@ export default function RegisterForm({ onClose }) {
             />
           </svg>
           <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-            Sign-Up
+            Login to Your Account
           </h2>
 
           {/* <!-- Email and Password Form --> */}
-
-          <form onSubmit={handleRegisterNewUser}>
+          <form onSubmit={handleLogin} action="#">
             <div className="mb-4">
+
               <input
                 type="text"
                 id="username"
                 name="username"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                placeholder="Username"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                placeholder="Email"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                type="password"
-                id="password"
-                name="password1"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                placeholder="Password"
-                required
+                placeholder="Enter your email or username"
               />
             </div>
 
             <div className="">
+
               <input
                 type="password"
-                name="password2"
+                name="password"
                 id="password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-                placeholder="Confirm password"
-                required
+                placeholder="Enter your password"
               />
             </div>
+            {errorMessage && (
+              <div classNameName="mb-4">
+                <p className="text-sm text-red-600">
+                  Invalid username or password.
+                </p>
+              </div>
+            )}
             <button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition mt-6"
             >
-              Sign up
+              Login
             </button>
           </form>
 
@@ -131,16 +124,26 @@ export default function RegisterForm({ onClose }) {
                 />
                 <path fill="none" d="M0 0h48v48H0z" />
               </svg>
-              Sign up with Google
+              Sign in with Google
             </button>
           </div>
 
           {/* <!-- Forgot Password & Sign-Up --> */}
           <div className="mt-6 text-center">
+            <a
+              href="#"
+              className="text-sm text-blue-600 hover:underline block mb-4"
+            >
+              Forgot password?
+            </a>
             <p className="text-gray-600">
-              Already a memeber?{" "}
-              <a className="text-blue-600 font-semibold hover:underline">
-                Login
+              New to the website?{" "}
+              <a
+                href="/registerPage"
+                
+                className="text-blue-600 font-semibold hover:underline"
+              >
+                Sign up
               </a>
             </p>
           </div>
