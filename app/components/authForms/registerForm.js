@@ -1,5 +1,5 @@
 "use client";
-import useResource from "../../customeHook/registerNewUser";
+import useResource from "../../appUtils/customeHook/registerNewUser";
 export default function RegisterForm({ onClose }) {
   const { createNewUser } = useResource();
   const handleRegisterNewUser = async (e) => {

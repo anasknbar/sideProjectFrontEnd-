@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../appUtils/context/authContext";
 export default function LoginForm({isOpen, onClose }) {
   const {login } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
