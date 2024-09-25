@@ -1,8 +1,9 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "@/app/context/authContext";
+import { AuthContext } from "@/app/appUtils/context/authContext";
 import LoginForm from "../authForms/loginForm";
 import SearchInput from "./searchInput";
+import Link from "next/link";
 export default function UserHeader({setActivePage}) {
   const { tokens, logout } = useContext(AuthContext);
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -34,8 +35,8 @@ export default function UserHeader({setActivePage}) {
             </span>
           </a>
           <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <button
-            onClick={()=>{setActivePage('postPage')}}
+            <Link
+            href={'/post/'}
               type="button"
               class="text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 "
             >
@@ -54,7 +55,8 @@ export default function UserHeader({setActivePage}) {
                 />
               </svg>
               Post
-            </button>
+            </Link>
+
             <button
               onClick={logout}
               type="button"

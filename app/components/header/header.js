@@ -1,9 +1,9 @@
 'use client'
 import { useContext, useState } from "react";
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../appUtils/context/authContext";
 import GuestHeader from "./guestHeader";
 import UserHeader from "./userHeader";
-export default function Header({setActivePage}) {
+export default function Header() {
     const {tokens,logout} = useContext(AuthContext);
     const [showLoginForm,setShowLoginForm] = useState(false)
 
@@ -17,7 +17,7 @@ export default function Header({setActivePage}) {
 
   return (
     <>
-      {!tokens?(<GuestHeader/>):(<UserHeader setActivePage = {setActivePage}/>)}
+      {!tokens?(<GuestHeader/>):(<UserHeader/>)}
       
     </>
   );
