@@ -1,8 +1,9 @@
 "use client";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../appUtils/context/authContext";
-export default function LoginForm({isOpen, onClose }) {
-  const {login } = useContext(AuthContext);
+import { motion } from "framer-motion";
+export default function LoginForm({ isOpen, onClose }) {
+  const { login } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,13 +27,14 @@ export default function LoginForm({isOpen, onClose }) {
     }
   };
 
-
-
   return (
     <>
-    
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      
+      <div 
+        // initial={{ opacity: 0, scale: 0.8, y: -50 }}
+        // animate={{ opacity: 1, scale: 1, y: 0 }}
+        // exit={{ opacity: 0, scale: 0.8, y: -50 }}
+        // transition={{ duration: 0.1, ease: 'easeInOut' }} // smooth transition
+      className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
         <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg relative ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +58,6 @@ export default function LoginForm({isOpen, onClose }) {
           {/* <!-- Email and Password Form --> */}
           <form onSubmit={handleLogin} action="#">
             <div className="mb-4">
-
               <input
                 type="text"
                 id="username"
@@ -67,12 +68,11 @@ export default function LoginForm({isOpen, onClose }) {
             </div>
 
             <div className="">
-
               <input
                 type="password"
                 name="password"
                 id="password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                className="w-full px-4 py-2 border border-gray-300 backdrop-blur-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
                 placeholder="Enter your password"
               />
             </div>
@@ -140,7 +140,6 @@ export default function LoginForm({isOpen, onClose }) {
               New to the website?{" "}
               <a
                 href="/registerPage"
-                
                 className="text-blue-600 font-semibold hover:underline"
               >
                 Sign up
