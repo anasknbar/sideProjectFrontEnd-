@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation"; // this Hook is used to redirect users to specific page.
 
 // 1. Create the context
 // `AuthContext` will be used to provide authentication state (like tokens) across the app.
@@ -13,7 +14,8 @@ export default function AuthWrapper({ children }) {
   // Add a loading state
   // `loading` will control whether the authentication system is ready. It starts as true.
   const [loading, setLoading] = useState(true);
-
+  // create an instance of the userRouter() to use for redirections 
+  const router = useRouter()
   // Create the global login state
   // `globalLoginState` will store tokens and login/logout functions.
   const [globalLoginState, setGlobalLoginState] = useState(() => {
@@ -88,6 +90,8 @@ export default function AuthWrapper({ children }) {
       // Remove tokens from localStorage
       localStorage.removeItem("tokens");
     }
+    // redirect users to the index page when sign-out 
+    router.push('/');
   }
 
   // Define the refresh token function

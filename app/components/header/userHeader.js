@@ -38,7 +38,7 @@ export default function UserHeader({setActivePage}) {
             <Link
             href={'/post/'}
               type="button"
-              class="text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 "
+              class="text-white bg-amber-400 hover:bg-amber-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
