@@ -1,11 +1,11 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "@/app/appUtils/context/authContext";
+import { AuthContext } from "@/app/context/authContext";
 import LoginForm from "../authForms/loginForm";
 import SearchInput from "./searchInput";
 import Link from "next/link";
-export default function UserHeader({setActivePage}) {
-  const { tokens, logout } = useContext(AuthContext);
+import Dropdown from "./dropDowin";
+export default function UserHeader() {
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   const handleShowingLoginForm = () => {
@@ -34,9 +34,9 @@ export default function UserHeader({setActivePage}) {
               Flowbite
             </span>
           </a>
-          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse flex flex-wrap items-center justify-between">
             <Link
-            href={'/post/'}
+            href={'/share-ai/post/'}
               type="button"
               class="text-white bg-amber-400 hover:bg-amber-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mr-4 "
             >
@@ -56,14 +56,12 @@ export default function UserHeader({setActivePage}) {
               </svg>
               Post
             </Link>
+            {/* ----- */}
 
-            <button
-              onClick={logout}
-              type="button"
-              class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Logout
-            </button>
+<Dropdown/>
+
+            {/* ----- */}
+
 
             <button
               data-collapse-toggle="navbar-cta"

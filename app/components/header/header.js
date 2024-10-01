@@ -1,6 +1,6 @@
 'use client'
 import { useContext, useState } from "react";
-import { AuthContext } from "../../appUtils/context/authContext";
+import { AuthContext } from "../../context/authContext";
 import GuestHeader from "./guestHeader";
 import UserHeader from "./userHeader";
 export default function Header() {

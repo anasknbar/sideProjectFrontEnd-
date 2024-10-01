@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../appUtils/context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
 export default function Sidebar() {
@@ -63,7 +63,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link
-                href={"/trending/"}
+                href={"/share-ai/trending/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
               >
                 <svg
@@ -84,7 +84,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link
-                href={"/explore/"}
+                href={"/share-ai/explore/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer"
               >
                 <svg
@@ -108,7 +108,7 @@ export default function Sidebar() {
           <ul class="pt-4 mt-4 space-y-2 font-thin text-sm border-t border-gray-200 dark:border-gray-700">
             <li>
               <Link
-                href={"/create_community/"}
+                href={"/share-ai/create_community/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -131,7 +131,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link
-                href={"/tags/"}
+                href={"/share-ai/tags/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -152,7 +152,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link
-                href={"/saves/"}
+                href={"/share-ai/saves/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -173,7 +173,7 @@ export default function Sidebar() {
             </li>
             <li>
               <Link
-                href={"/discussions/"}
+                href={"/share-ai/discussions/"}
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg

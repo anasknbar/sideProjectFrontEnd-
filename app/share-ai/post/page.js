@@ -1,24 +1,22 @@
 "use client";
 import { useContext, useState } from "react";
-import conversationResources from "../appUtils/customeHook/postResources";
-import { AuthContext } from "../appUtils/context/authContext";
+import conversationResources from "../../hooks/conversationResources";
+import { AuthContext } from "../../context/authContext";
 import { jwtDecode } from "jwt-decode";
-import LoginForm from "../components/authForms/loginForm";
+import LoginForm from "../../components/authForms/loginForm";
 export default function Post() {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const { createConversation } = conversationResources();
   const { tokens } = useContext(AuthContext);
 
-  if (!tokens){
-    return(
+  if (!tokens) {
+    return (
       <>
-      <LoginForm/>
+        <LoginForm />
       </>
-    )
+    );
   }
-
-
   // Function to add a tag
   const addTag = (e) => {
     e.preventDefault();
@@ -66,7 +64,7 @@ export default function Post() {
         tags: destructredTags,
       };
 
-      console.log(conversationData);
+      console.log('>>||>>',conversationData);
       createConversation(conversationData);
       const form = document.getElementById("conversationForm");
       form.reset();

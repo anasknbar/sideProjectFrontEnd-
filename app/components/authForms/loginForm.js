@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../appUtils/context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { motion } from "framer-motion";
 export default function LoginForm({ isOpen, onClose }) {
   const { login } = useContext(AuthContext);

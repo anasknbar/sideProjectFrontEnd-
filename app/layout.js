@@ -1,5 +1,5 @@
-import "./globals.css";
-import AuthWrapper from "./appUtils/context/authContext";
+import './styles/globals.css'
+import AuthWrapper from "./context/authContext";
 import { ThemeProvider } from "next-themes";
 import Sidebar from "./components/dashbord/aside"; // Assuming Sidebar component is in components folder
 import Header from "./components/header/header";
