@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../appUtils/context/authContext";
+import { AuthContext } from "../../context/authContext";
 import LoginForm from "../authForms/loginForm";
 import RegisterForm from "../authForms/registerForm";
 import SearchInput from "./searchInput";
